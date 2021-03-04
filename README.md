@@ -13,7 +13,7 @@
 # Connectivity
 The app is pretty useless without connectivity. It would be straightforward enough to do the following:
 - cache a few images of every breed so it would still do *something*
-- Add a listener to NetInfo and a Context provider to 
+- Add a listener to NetInfo and a Context provider to update app on net status through a hook
 
 # Tradeoffs / Optimizations
 
