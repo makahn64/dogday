@@ -10,12 +10,18 @@
 - Pull down on breed images or random images reloads another batch of photos
 - Dark mode support in settings
 
+# Connectivity
+The app is pretty useless without connectivity. It would be straightforward enough to do the following:
+- cache a few images of every breed so it would still do *something*
+- Add a listener to NetInfo and a Context provider to 
+
 # Tradeoffs / Optimizations
 
 1. The breed list is quite short (even if flattened for sub-breeds). If this were a very long list, it might make sense to move the filtering function to the cloud with something like elastic search. ( Note: I chose to cache the breed list as an example; it's not necessary with such little data.)
 2. Image caching could be added beyond what RN provides. Performance seemed acceptable, so I didn't bother.
 3. I considered memoizing the initial random image for the breed list. In this case a single image would be shown "forever". It wasn't clear if this was intended behavior, so I didn't do it.
 4. If this were a real app, I would implement gradient loading skeletons. However, these generally require "twitchy" gradient libs, so I passed on this for now.
+5. There's a bit more use of inline styles than I would have in a real project. This would inhibit UI/UX global changes in a larger app, but for a demo I went with it.
 
 # Possible Bugs
 
