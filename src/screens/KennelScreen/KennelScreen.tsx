@@ -3,11 +3,16 @@ import {ActivityIndicator, RefreshControl, ScrollView} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {randomImageForBreed} from '../../services/dogapi/images';
 import * as Animatable from 'react-native-animatable';
+import {Image} from 'react-native-elements';
 
 const NUM_RANDOM_IMG = 6;
 
+const AnimatableRNEImage = Animatable.createAnimatableComponent(Image);
+
 export const KennelScreen: FC = () => {
   const route = useRoute();
+  // the parameters should be typed, but this is an area where React Nav can be a bit of a hassle
+  // @ts-ignore
   const {
     params: {breed},
   } = route;
@@ -39,7 +44,8 @@ export const KennelScreen: FC = () => {
 
   const handleMore = () => {
     setRandoms([]);
-    setTimeout(getRandoms, 1000);
+    // the illusion of work
+    setTimeout(getRandoms, 500);
   };
 
   return (
@@ -48,13 +54,13 @@ export const KennelScreen: FC = () => {
       refreshControl={
         <RefreshControl
           refreshing={isRefreshing}
-          onRefresh={getRandoms}
+          onRefresh={handleMore}
           colors={['#2020ff']}
           tintColor="#2020ff"
         />
       }>
       {randoms.map((url, idx) => (
-        <Animatable.Image
+        <AnimatableRNEImage
           source={{uri: url}}
           key={idx}
           animation="zoomIn"
